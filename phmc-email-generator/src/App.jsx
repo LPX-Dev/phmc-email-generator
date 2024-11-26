@@ -103,7 +103,7 @@ Pillbox Hill Medical Center - Pathology  and Forensic Medicine
                     <h5>This website is fully open source and was made by Fr0sty, you can report bugs in the PHMC Discord.</h5>
                     </a>
                     <details>
-                        <summary>Change Log - 1.3a</summary>
+                        <summary>Change Log - 1.3b</summary>
                         <ul>
                             <li>Pathalogy is now resting in the morgue (thx to Rebecca Rose). </li>
                             <li>- frosty</li>
