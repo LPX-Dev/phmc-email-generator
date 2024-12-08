@@ -1,0 +1,97 @@
+.App {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-container {
+    width: 35%;
+    background-color: #0d1117;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.output-container {
+    width: 60%;
+    background-color: #0d1117;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.bbcode-output, .title-output {
+    background-color: #0d1117;
+    padding: 10px;
+    border-radius: 8px;
+    overflow: auto;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px
+}
+
+input, textarea, select {
+    background-color: #16202c;
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #acb1cad3;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+button {
+    padding: 9px 50px;
+    background-color: grey;
+    color: white;
+    border: tr;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-right: 10px; /* Adjust the value as needed */
+}
+
+    button:hover {
+        background-color: deeppink;
+    }
+
+pre {
+    white-space: pre-wrap;
+    margin: 0;
+}
+
+body {
+    color: #010409;
+    background: #fff;
+    font: 100% system-ui;
+}
+
+a {
+    color: #0033cc;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        color: #eeeeeeb0;
+        background: #010409;
+    }
+
+        body a {
+            color: #809fff;
+        }
+}
