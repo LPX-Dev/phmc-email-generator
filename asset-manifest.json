@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/phmc-email-generator/static/css/main.49c81a67.css",
-    "main.js": "/phmc-email-generator/static/js/main.3e9a77b7.js",
+    "main.js": "/phmc-email-generator/static/js/main.e5c4569f.js",
     "static/media/dmec_christmas.png": "/phmc-email-generator/static/media/dmec_christmas.100d577a5b1eda4882d2.png",
     "index.html": "/phmc-email-generator/index.html",
     "main.49c81a67.css.map": "/phmc-email-generator/static/css/main.49c81a67.css.map",
-    "main.3e9a77b7.js.map": "/phmc-email-generator/static/js/main.3e9a77b7.js.map"
+    "main.e5c4569f.js.map": "/phmc-email-generator/static/js/main.e5c4569f.js.map"
   },
   "entrypoints": [
     "static/css/main.49c81a67.css",
-    "static/js/main.3e9a77b7.js"
+    "static/js/main.e5c4569f.js"
   ]
 }
