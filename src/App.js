@@ -105,7 +105,7 @@ Pillbox Hill Medical Center - Pathology  and Forensic Medicine
                     <details>
                         <summary>Change Log - 1.4</summary>
                         <ul>
-                            <li>Christmas is here </li>
+                            <li>Christmas is here! </li>
                             <li> - frosty</li>
                         </ul>
                     </details>  
