@@ -155,6 +155,7 @@ Pillbox Hill Medical Center - Pathology  and Forensic Medicine
                             Coroner's Rank:
                             <select name="jobClassification" value={formData.jobClassification} onChange={handleChange} required>
                                 <option value="Forensic Attendant">Forensic Attendant</option>
+                                <option value="Senior Forensic Attendant">Senior Forensic Attendant </option>
                                 <option value="Supervising Forensic Attendant">Supervising Forensic Attendant</option>
                                 <option value="Coroner Investigator">Coroner Investigator</option>
                                 <option value="Supervising Coroner Investigator">Supervising Coroner Investigator</option>
