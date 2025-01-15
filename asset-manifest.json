@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/phmc-email-generator/static/css/main.76250bf1.css",
-    "main.js": "/phmc-email-generator/static/js/main.70eaf43a.js",
+    "main.css": "/phmc-email-generator/static/css/main.406c5c8a.css",
+    "main.js": "/phmc-email-generator/static/js/main.e592c9b5.js",
     "static/media/fa-solid-900.ttf": "/phmc-email-generator/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
     "static/media/lssd.png": "/phmc-email-generator/static/media/lssd.88defbb73fea92316814.png",
     "static/media/fa-brands-400.ttf": "/phmc-email-generator/static/media/fa-brands-400.1815e00441357e01619e.ttf",
@@ -17,11 +17,11 @@
     "static/media/fa-v4compatibility.ttf": "/phmc-email-generator/static/media/fa-v4compatibility.da94ef451f4969af06e6.ttf",
     "static/media/fa-v4compatibility.woff2": "/phmc-email-generator/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
     "index.html": "/phmc-email-generator/index.html",
-    "main.76250bf1.css.map": "/phmc-email-generator/static/css/main.76250bf1.css.map",
-    "main.70eaf43a.js.map": "/phmc-email-generator/static/js/main.70eaf43a.js.map"
+    "main.406c5c8a.css.map": "/phmc-email-generator/static/css/main.406c5c8a.css.map",
+    "main.e592c9b5.js.map": "/phmc-email-generator/static/js/main.e592c9b5.js.map"
   },
   "entrypoints": [
-    "static/css/main.76250bf1.css",
-    "static/js/main.70eaf43a.js"
+    "static/css/main.406c5c8a.css",
+    "static/js/main.e592c9b5.js"
   ]
 }
