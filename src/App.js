@@ -1824,7 +1824,7 @@ Surgical Operations Department`;
                                     height={350}
                                     width={350}
                                     className="Center"
-                                    alt="Internal Reports Link"
+                                    alt="Internal Reports LiAAAAAAAAAAAAnk"
                                 />
                             </a>
                         </div>
