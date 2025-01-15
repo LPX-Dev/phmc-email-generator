@@ -1,14 +1,27 @@
 {
   "files": {
-    "main.css": "/phmc-email-generator/static/css/main.49c81a67.css",
-    "main.js": "/phmc-email-generator/static/js/main.e5c4569f.js",
-    "static/media/dmec_christmas.png": "/phmc-email-generator/static/media/dmec_christmas.100d577a5b1eda4882d2.png",
+    "main.css": "/phmc-email-generator/static/css/main.6457b9d6.css",
+    "main.js": "/phmc-email-generator/static/js/main.8fc13e7d.js",
+    "static/media/fa-solid-900.ttf": "/phmc-email-generator/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
+    "static/media/lssd.png": "/phmc-email-generator/static/media/lssd.88defbb73fea92316814.png",
+    "static/media/fa-brands-400.ttf": "/phmc-email-generator/static/media/fa-brands-400.1815e00441357e01619e.ttf",
+    "static/media/fa-solid-900.woff2": "/phmc-email-generator/static/media/fa-solid-900.2463b90d9a316e4e5294.woff2",
+    "static/media/fa-brands-400.woff2": "/phmc-email-generator/static/media/fa-brands-400.c210719e60948b211a12.woff2",
+    "static/media/lsfd.png": "/phmc-email-generator/static/media/lsfd.369fffd0ce7b41b0a860.png",
+    "static/media/fa-regular-400.ttf": "/phmc-email-generator/static/media/fa-regular-400.914997e1bdfc990d0897.ttf",
+    "static/media/feedback.png": "/phmc-email-generator/static/media/feedback.749299dd3d7b9dcc39a5.png",
+    "static/media/myPaperwork2.png": "/phmc-email-generator/static/media/myPaperwork2.d2d61eeb95f05e33b36f.png",
+    "static/media/lspd.png": "/phmc-email-generator/static/media/lspd.330707fe65d8615fe7ee.png",
+    "static/media/fa-regular-400.woff2": "/phmc-email-generator/static/media/fa-regular-400.89999bdf5d835c012025.woff2",
+    "static/media/phmc.png": "/phmc-email-generator/static/media/phmc.9d5854886cbaba13deb8.png",
+    "static/media/fa-v4compatibility.ttf": "/phmc-email-generator/static/media/fa-v4compatibility.da94ef451f4969af06e6.ttf",
+    "static/media/fa-v4compatibility.woff2": "/phmc-email-generator/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
     "index.html": "/phmc-email-generator/index.html",
-    "main.49c81a67.css.map": "/phmc-email-generator/static/css/main.49c81a67.css.map",
-    "main.e5c4569f.js.map": "/phmc-email-generator/static/js/main.e5c4569f.js.map"
+    "main.6457b9d6.css.map": "/phmc-email-generator/static/css/main.6457b9d6.css.map",
+    "main.8fc13e7d.js.map": "/phmc-email-generator/static/js/main.8fc13e7d.js.map"
   },
   "entrypoints": [
-    "static/css/main.49c81a67.css",
-    "static/js/main.e5c4569f.js"
+    "static/css/main.6457b9d6.css",
+    "static/js/main.8fc13e7d.js"
   ]
 }
