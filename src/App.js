@@ -1,6 +1,5 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import React, { useState, useEffect } from 'react';
-import './App.css';
 import Paperwork from './myPaperwork2.png';
 import Feedback from './feedback.png';
 import Notification from './components/Notification';
@@ -9,6 +8,9 @@ import LSSDLogo from './assets/lssd.png';
 import LSFDLogo from './assets/lsfd.png';
 import PHMCLogo from './assets/phmc.png';
 import { Form, Button, InputGroup } from 'react-bootstrap';
+import './App.css';
+import './buttons.css'
+
 
 function App() {
     const [formData, setFormData] = useState({
@@ -26,6 +28,7 @@ function App() {
         typeOfDeath: 'PK',
         decedentOOC: '',
         scenePhotos: '',
+        // email stuff
         additionalImages: '',
         requestingOfficer: '',
         coronerDiscord: '',
@@ -38,9 +41,68 @@ function App() {
         showInternalAdditionalReports: false,
         policeNotification: '',
         partiesInvolved: [''],
-        // test
         treatmentLocation: '',
-        moreDeathReports: ['']
+        moreDeathReports: [''],
+        // surgical operations fields
+        leadSurgeon: '',
+        extraStaff: '',
+        patientName: '',
+        patientConsent: '',
+        patientAllergies: '',
+        surgeryComplications: '',
+        surgeryProcedures: '',
+        drugType: '',
+        postDrugtype: '',
+        surgicalSummery: '',
+        surgeryTime: '',
+        // physical evaluation fields
+        leadDoctor: '',
+        medicalComplications: '',
+        treatmentProcedures: '',
+        medType: '',
+        postTreatment: '',
+        medicalSummary: '',
+        evalTime: '',
+        patientPH: '',
+        patientBPM: '',
+        patientBMI: '',
+        patientTemperature: '',
+        patientCareer: '',
+        patientHeight: '',
+        patientWeight: '',
+        patientpulse: '',
+        patientOxi: '',
+        patientBP: '',
+        patientImpairments: '',
+        patientPastDiseases: '',
+        patientAssessment: '',
+        appointmentDate: '',
+        // dental fields
+        PatientMedicalRecord: '',
+        PatientName: '',
+        patientChewing: '',
+        patientPriority: '',
+        patientMedicine: '',
+        patientNewMedicine: '',
+        patientTreatment: '',
+        patientDiagnosis: '',
+        patientPrescription: '',
+        patientSummary: '',
+        dentistName: '',
+        date: '',
+        // Medical Consultation - Internal Medicine 
+        doctorName: '',
+        patientMedicalRecord: '',
+        patientGender: '',
+        patientDateofBirth: '',
+        patientEmail: '',
+        patientAddress: '',
+        patientEmergencyContact: '',
+        patientEmergencyContactNumber: '',
+        patientEmergencyContactRelation: '',
+        patientBloodType: '',
+        patientChronicDiseases: '',
+
     });
     const [isUploading, setIsUploading] = useState(false);
     const [isJohnDoe, setIsJohnDoe] = useState(false);
@@ -126,12 +188,6 @@ function App() {
         { name: 'Patrick Boyd', badge: '171368', jobTitle: 'Forensic Attendant' },
     ]);
 
-    // Add new surgeon list state
-    const [surgeonList] = useState([
-        { name: 'Dr. Smith', badge: '1234', jobTitle: 'Chief Surgeon' },
-        { name: 'Dr. Johnson', badge: '5678', jobTitle: 'Senior Surgeon' },
-        // Add more surgeons as needed
-    ]);
 
     // Add utility function
     const containsNumbers = (str) => /\d/.test(str);
@@ -247,7 +303,7 @@ function App() {
 
         const scenePhotosBBCode = scenePhotos.split(',').map(photo => `[img]${photo.trim()}[/img]`).join('\n');
         const additionalImagesBBCode = additionalImages.split(',').map(photo => `[img]${photo.trim()}[/img]`).join('\n');
-
+        // Base BBCode for ID 1
         const bbCode = `[divbox=transparent][center][img]https://i.imgur.com/Hxjt4M2.png[/img][/center][/divbox]
 
 [divbox=transparent][br][/br][center]DEATH INVESTIGATION REPORT[/center]
@@ -307,7 +363,7 @@ This document is provided for official purposes only and is not to be construed 
             additionalReports,
         } = formData;
 
-        // Base BBCode template
+        // Base BBCode for ID 2
         let bbCode = `[center][img]https://i.imgur.com/ItaoQkO.png[/img][/center]
 [hr][/hr]
     
@@ -373,142 +429,373 @@ Pillbox Hill Medical Center - Pathology  and Forensic Medicine
 
         return bbCode;
     };
-
-    const generateInternalBBCode = () => {
+    // Medical Consultation (Internal Medicine) | Base BBCode for ID 3
+    const generateMedicalConsultationInternalMedicine = () => {
         const {
-            coronerName,
-            coronerRank,
-            coronerBadge,
-            incidentDescription,
-            incidentLocation,
-            incidentDateTime,
-            policeNotification,
-            treatmentLocation,
-            incidentPhotos,
+            doctorName,
+            patientName,
+            patientMedicalRecord,
+            patientGender,
+            patientDateofBirth,
+            patientEmail,
+            patientAddress,
+            patientEmergencyContact,
+            patientEmergencyContactNumber,
+            patientEmergencyContactRelation,
+            patientBloodType,
+            patientChronicDiseases,
+            patientPH,
+            patientAllergies,
         } = formData;
 
-        const notificationText = policeNotification === 'Yes'
-            ? '[b]Law Enforcement was notified[/b]'
-            : '[b]Law Enforcement was [color=red]not[/color] notified[/b]';
 
-        const partiesList = formData.partiesInvolved
-            .map((party, index) => party ? `${index + 1}. ${party}` : '')
-            .filter(party => party)
-            .join('\n');
-
-        let bbCode = `
-[b]EMPLOYEE NAME:[/b] ${coronerName} ${coronerRank} ${coronerBadge}${incidentDescription}
-${incidentDateTime} ${incidentLocation} ${policeNotification} ${treatmentLocation}
-${policeNotification}
-${partiesList} ${incidentPhotos}
-${notificationText}
+        let bbCode = `[divbox=white] [center] [img]https://i.imgur.com/bUn7H8J.png[/img] [/center] [/divbox]
+[divbox=lightgrey] [color=#800000][b]Section 1. Medical Patient Record[/b][/color] [/divbox]
+[divbox=white] [list=none] [b]1.1.[/b] Patient Number: ${patientMedicalRecord}
+[b]1.2.[/b] Completed by: ${doctorName}
+[/list][/divbox]
+[divbox=lightgrey] [color=#800000][b]Section 2. Patient Demographics[/b][/color] [/divbox]
+[divbox=white] [list=none] [b]2.1.[/b] Full Name: ${patientName}
+[b]2.2.[/b] Sex: ${patientGender}
+[b]2.3.[/b] Date Of Birth: ${patientDateofBirth}
+[b]2.4.[/b] Telephone Number: ${patientPH}
+[b]2.5.[/b] E-Mail: ${patientEmail}
+[b]2.6.[/b] Home Address: ${patientAddress}
+[/list][/divbox]
+[divbox=lightgrey] [color=#800000][b]Section 3. Emergency Contact Information[/b][/color] [/divbox]
+[divbox=white] [list=none] [b]3.1.[/b] Contact Name: ${patientEmergencyContact}
+[b]3.2.[/b] Telephone Number: ${patientEmergencyContactNumber}
+[b]3.3.[/b] Relation to Patient: ${patientEmergencyContactRelation}
+[/list][/divbox]
+[divbox=lightgrey] [color=#800000][b]Section 4. Health Status Information[/b][/color] [/divbox]
+[divbox=white] [list=none] [b]4.1.[/b] Blood type: ${patientBloodType}
+[b]4.2.[/b] Known Chronic Diseases: ${patientChronicDiseases}
+[b]4.3.[/b] Known Allergies: ${patientAllergies}
+[/list][/divbox]
 `;
 
         return bbCode;
     };
 
-    // Add new generation function
-    const generateInternalMedicine = () => {
+    // Base BBCode for ID 4
+    const generateDental = () => {
         const {
-            requestingOfficer,
-            department,
-            coronerName,
-            coronerRank,
-            coronerDiscord,
-            coronerPHNumber,
-            deathReport,
-            additionalReports,
+            PatientMedicalRecord,
+            PatientName,
+            patientWeight,
+            patientChewing,
+            patientPriority,
+            patientMedicine,
+            patientNewMedicine,
+            patientTreatment,
+            patientDiagnosis,
+            patientPrescription,
+            patientSummary,
+            dentistName,
+            date,
         } = formData;
 
-        let bbCode = `[center][img]https://i.imgur.com/ItaoQkO.png[/img][/center]
-[hr][/hr]
-    
-TO: Internal Medicine Department
-FROM: ${coronerName} @ phmc.health
-SUBJECT: Internal Medicine Report
+        let bbCode = `[divbox=lightgrey][size=150]
 
-This Internal Medicine Report has been written by ${coronerRank} ${coronerName}.
+[center][b]DEPARTMENT OF DENTAL MEDICINE[/b]
+[color=#800000][b]DENTAL CONSULTATION[/b][/color][/center][/size]
 
-[b]REPORT INFORMATION[/b]
-Department: ${department}
-Requesting Officer: ${requestingOfficer}
+[/divbox]
 
-[list]Contact Information:
-[*]Name: ${coronerName}
-[*]Phone: ${coronerPHNumber}
-[*]Discord: ${coronerDiscord}[/list]
+[divbox=lightgrey][b]SECTION 0: PERSONAL INFORMATION[/b][/divbox]
+[divbox=white][table][tr][td][b]0.1[/b] Identifying
+[/td][td]
+[b]Medical Record Number:[/b] ${PatientMedicalRecord}
+[b]Full Name:[/b] ${PatientName}
+[b]Date Of Birth:[/b] ${PatientName}
 
-[altspoiler=Internal Medicine Report]
-${deathReport}
-[code]${deathReport}[/code]
-[/altspoiler]
+[/table][/divbox]
 
-${additionalReports && additionalReports.length > 0
-                ? additionalReports
-                    .filter(report => report.trim())
-                    .map((report, index) => `
-[altspoiler=Additional Report #${index + 1}]
-${report}
-[code]${report}[/code]
-[/altspoiler]`).join('\n\n')
-                : ''}
+[divbox=lightgrey][b]SECTION 1: PATIENT MEASUREMENTS[/b][/divbox]
+[divbox=white][table][tr][td][b]1.1[/b] Weight[/td][td]
+${patientWeight}
 
-Kind regards,
-${coronerRank} ${coronerName}
-Internal Medicine Department`;
+[tr][td][b]1.2[/b] Problems With Chewing & Swallowing[/td][td]
+${patientChewing}
+
+[/table][/divbox]
+
+[divbox=lightgrey][b]SECTION 2: PRIORITY CLASSIFICATION[/b][/divbox]
+[divbox=white][table][tr][td][b]2.1[/b] Priority Criteria [/td][td]
+[cb][/cb] Priority 1: Immediate care
+[cb][/cb] Priority 2: Extensive amount of decay
+[cb][/cb] Priority 3: Obvious cavities
+[cb][/cb] Priority 0: No obvious cavities
+${patientPriority}
+[/table][/divbox]
+
+[divbox=lightgrey][b]SECTION 3: MEDICATIONS[/b][/divbox]
+[divbox=white][table][tr][td][b]3.1[/b] Current Medications[/td][td]
+${patientMedicine}
+
+[tr][td][b]3.2[/b] New Medications[/td][td]
+${patientNewMedicine}
+
+[/table][/divbox]
+
+[divbox=lightgrey][b]SECTION 4: DIAGNOSIS[/divbox]
+[divbox=white][table]
+
+[tr][td][b]4.1[/b] Mark Tooth Decay Area[/td][td]
+[img]https://i.imgur.com/31wOMlD.jpeg[/img]
+
+[tr][td][b]4.2[/b] Diagnosed With[/td][td]
+${patientDiagnosis}
+
+[tr][td][b]4.3[/b] Treatment[/td][td]
+${patientTreatment}
+
+[tr][td][b]4.4[/b] Prescription[/td][td]
+${patientPrescription}
+
+[/table][/divbox]
+
+[divbox=lightgrey][b]SECTION 5: SUMMARY OF CONSULTATION[/b][/divbox]
+[divbox=white][list=none]
+
+${patientSummary}
+
+[/divbox][divbox=lightgrey][b]SECTION 6: PERSON IN CHARGE OF THE CONSULTATION[/b][/divbox]
+
+[divbox=white][table][tr][td][b]6.1[/b] Full Name (Signature)[/td][td] ${dentistName}
+[tr][td][b]6.2[/b] Full Name (Print)[/td][td]${dentistName}
+[tr][td][b]6.3[/b] Date[/td][td]${date}[/table][/divbox]`;
 
         return bbCode;
     };
 
-    // Add new generation function
+    // Add new generation Surgical Ops function 5
     const generateSurgicalOps = () => {
         const {
-            requestingOfficer,
-            department,
-            surgeonName,
-            surgeonRank,
-            surgeonDiscord,
-            surgeonPHNumber,
-            operationReport,
-            additionalReports,
+            leadSurgeon,
+            extraStaff,
+            patientName,
+            patientMedicine,
+            patientConsent,
+            patientMedicalRecord,
+            patientAllergies,
+            surgeryComplications,
+            surgeryProcedures,
+            drugType,
+            postDrugtype,
+            surgicalSummery,
+            surgeryTime,
         } = formData;
 
-        let bbCode = `[center][img]https://i.imgur.com/ItaoQkO.png[/img][/center]
-[hr][/hr]
-    
-TO: Surgical Operations Department
-FROM: ${surgeonName} @ phmc.health
-SUBJECT: Surgical Operation Report
+        let bbCode = `[divbox=white] [center] [img]https://i.imgur.com/bUn7H8J.png[/img] [/center] [/divbox]
+[divbox=lightgrey][size=150]
 
-This Surgical Report has been written by ${surgeonRank} ${surgeonName}.
+[center][b]OPERATIVE REPORT
+PILLBOX HILL MEDICAL CENTER[/b]
+[size=50][i]Elgin Avenue, Pillbox Hill, Los Santos, SA[/i][/size][/center][/size]
 
-[b]OPERATION INFORMATION[/b]
-Department: ${department}
-Requesting Staff: ${requestingOfficer}
+[/divbox][divbox=white][justify]
 
-[list]Contact Information:
-[*]Name: ${surgeonName}
-[*]Phone: ${surgeonPHNumber}
-[*]Discord: ${surgeonDiscord}[/list]
+[divbox=lightgrey][b]SECTION 1: PERSONNEL[/b][/divbox]
+[divbox=white][table][tr][td][b]1.1: [/b] Lead Surgeon[/td][td]
+${leadSurgeon}
+[/td][/tr]
 
-[altspoiler=Operation Report]
-${operationReport}
-[code]${operationReport}[/code]
-[/altspoiler]
+[tr][td][b]1.2: [/b] Additional Staff (Leave N/A if NPCed)[/td][td]
+${extraStaff}
+[/td][/tr]
 
-${additionalReports && additionalReports.length > 0
-                ? additionalReports
-                    .filter(report => report.trim())
-                    .map((report, index) => `
-[altspoiler=Additional Report #${index + 1}]
-${report}
-[code]${report}[/code]
-[/altspoiler]`).join('\n\n')
-                : ''}
+[tr][td][b]1.3: [/b] Patient Name[/td][td]
+${patientName}
+[/td][/tr]
 
-Kind regards,
-${surgeonRank} ${surgeonName}
-Surgical Operations Department`;
+[tr][td][b]1.3: [/b] Medical Record Number[/td][td]
+${patientMedicalRecord}
+[/td][/tr]
+
+[/table][/divbox]
+
+[divbox=lightgrey][b]SECTION 2: SURGICAL INQUIRY[/b][/divbox]
+[divbox=white][table]
+
+[tr][td][b]2.1: [/b]Did the patient or their family consent, or did they have a life threatening or severe injury that requires immediate surgical intervention?[/td][td]
+${patientConsent}
+[/td][/tr]
+
+[tr][td][b]2.2: [/b]Did any medical complications occur during the surgery?[/td][td]
+${surgeryComplications}
+[/td][/tr]
+
+[tr][td][b]2.3: [/b]Was the procedure completed successfully, and did it result in the desired clinical outcome?[/td][td]
+${surgeryProcedures}
+[/td][/tr]
+
+[/table][/divbox]
+
+[divbox=lightgrey][b]SECTION 3: POST-ANESTHESIA REPORT[/b][/divbox]
+[divbox=white][table]
+
+[tr][td][b]3.1: [/b]Known Current Medication:[/td][td]${patientMedicine}
+
+[/td][/tr]
+
+[tr][td][b]3.2: [/b]Known Allergies:[/td][td]${patientAllergies}
+
+[/td][/tr]
+
+[tr][td][b]3.3: [/b]Type & Dosage of Anesthesia Administered:[/td][td]${drugType}
+[/td][/tr]
+
+[tr][td][b]3.4: [/b]Post-Operative Anesthesia Details:[/td][td]${postDrugtype}
+[/td][/tr]
+
+[/table][/divbox]
+
+[divbox=lightgrey][b]SECTION 4: SUMMARY OF SURGICAL PROCEDURE PERFORMED[/b][/divbox]
+[divbox=white][list=none]
+
+${surgicalSummery}
+
+[/list][/divbox][divbox=lightgrey][b]SECTION 5: SIGNATURE OF THE LEAD SURGEON[/b][/divbox]
+
+[divbox=white][table][tr][td][b]5.1[/b] Full name (Signature)[/td][td]${leadSurgeon}[/td][/tr]
+[tr][td][b]5.2[/b] Full Name (Print)[/td][td]${leadSurgeon}
+[tr][td][b]5.3[/b] Date of Surgery[/td][td]${surgeryTime}[/table][/divbox]
+`;
+
+        return bbCode;
+    };
+
+    // Base BBCode for ID 6 Physical Evaluation (Internal Medicine)
+
+    const generatePhysEvalInternalMed = () => {
+        const {
+            leadDoctor,
+            patientName,
+            patientDateofBirth,
+            patientGender,
+            patientMedicine,
+            patientAllergies,
+            patientHeight,
+            patientWeight,
+            patientBMI,
+            patientTemperature,
+            patientBPM,
+            patientpulse,
+            patientOxi,
+            patientBP,
+            patientCareer,
+            patientImpairments,
+            patientPastDiseases,
+            patientAssessment,
+            appointmentDate,
+            patientPH
+        } = formData;
+
+        let bbCode = `[divbox=white] [center] [img]https://i.imgur.com/bUn7H8J.png[/img] [/center] [/divbox]
+[divbox=lightgrey][size=150]
+
+[center][b]DEPARTMENT OF INTERNAL MEDICINE
+PILLBOX HILL MEDICAL CENTER[/b]
+[size=50][i]Elgin Avenue, Pillbox Hill, Los Santos, SA[/i][/size][/center][/size]
+
+[/divbox][divbox=white][justify]
+
+[i]To provide guidance for workforce members at Pillbox Hill Medical Center regarding the use and disclosure of Protected Health Information in accordance with applicable law. It is the policy that all Protected Health Information be used and disclosed in accordance with applicable San Andreas and federal law, and in the best interests of the patient. "Disclose" and "Disclosure" means the release of, transfer of, provision of, access to, or divulging in any manner, of Protected Health Information outside of Pillbox Hill Medical Center or to persons other than its workforce members. Disclosure means a release to persons or entities other than to the patient who is the subject of the information.[/i]
+
+
+[/justify][/divbox]
+
+[divbox=lightgrey][b]SECTION 0: PERSONAL INFORMATION[/b][/divbox]
+[divbox=white][table][tr][td]Identifying
+Information[/td][td]
+[b]Name:[/b] ${patientName}
+[b]DOB:[/b] ${patientDateofBirth}
+[b]Sex:[/b] ${patientGender}
+[b]Race:[/b]
+[/td][/tr][tr][td]Contact
+Information[/td]
+[td][b]Telephone Number:[/b] ${patientPH}
+[b]Email:[/b]
+[/td][/tr]
+[tr][td]Examination
+Information[/td][td]
+[b]Date of Examination:[/b] ${appointmentDate}
+[b]Personnel in Charge of Examination:[/b] ${leadDoctor}
+[/td][/tr][/table][/divbox]
+
+[divbox=lightgrey][b]SECTION 1: PATIENT MEASUREMENTS[/b][/divbox]
+[divbox=white][table][tr][td][b]1.1[/b] Height[/td][td]
+${patientHeight}
+[/td][/tr]
+
+[tr][td][b]1.2[/b] Weight[/td][td]
+${patientWeight}
+[/td][/tr]
+
+[tr][td][b]1.3[/b] Body Mass Index[/td][td]
+Index Value:
+${patientBMI}
+[/td][/tr]
+
+[/table][/divbox]
+
+[divbox=lightgrey][b]SECTION 2: VITALS[/b][/divbox]
+[divbox=white][table][tr][td][b]2.1[/b] Body Temperature[/td][td]
+${patientTemperature}
+[/td][/tr]
+
+[tr][td][b]2.2[/b] Heart Rate[/td][td]
+${patientBPM} BPM
+[/td][/tr]
+
+[tr][td][b]2.3[/b] Respiration Rate[/td][td]
+${patientpulse} BPM
+[/td][/tr]
+
+[tr][td][b]2.4[/b] Pulse Oximetry[/td][td]
+${patientOxi} %
+[/td][/tr]
+
+[tr][td][b]2.5[/b] Blood Pressure[/td][td]
+${patientBP} MMHG
+[/td][/tr]
+
+[/table][/divbox]
+
+[divbox=lightgrey][b]SECTION 3: PATIENT ANAMNESIS[/b][/divbox]
+[divbox=white][table]
+
+[tr][td][b]3.1[/b] Patient had a job in the past[/td][td]
+${patientCareer}
+[/td][/tr]
+
+[tr][td][b]3.2[/b] Were other medical condition(s) or physical impairments found that would preclude the patient from rigorous duties[/td][td]
+${patientImpairments}
+[/td][/tr]
+
+[tr][td][b]3.3[/b] Patient has allergies/risks (implants, case of incompatibility, pacemaker, etc.)[/td][td]
+${patientAllergies}
+[/td][/tr]
+
+[tr][td][b]3.4[/b] Patient takes medication on a regular basis[/td][td]
+${patientMedicine}
+[/td][/tr]
+
+[tr][td][b]3.5[/b] Patient or family members have the following diseases: [/td][td]
+${patientPastDiseases}
+[/td][/tr]
+
+[/table][/divbox]
+
+[divbox=lightgrey][b]SECTION 4: ASSESSMENT SUMMARY[/b][/divbox]
+[divbox=white][list=none]
+
+${patientAssessment}
+[/list][/divbox][divbox=lightgrey][b]SECTION 5: SIGNATURE OF PERSON IN CHARGE OF EXAMINATION[/b][/divbox]
+
+[divbox=white][table][tr][td]Examiner's Signature:[/td][td]${leadDoctor}[/td][/tr][/table][/divbox]
+`;
 
         return bbCode;
     };
@@ -542,13 +829,65 @@ Surgical Operations Department`;
             scenePhotos: '',
             additionalImages: '',
             requestingOfficer: '',
+            coronerDiscord: '',
+            coronerPHNumber: '50056',
             deathReport: '',
             additionalReports: [],
             internalReport: '',
             internalAdditionalReports: '',
             policeNotification: '',
             partiesInvolved: [''],
-            moreDeathReports: ['']
+            treatmentLocation: '',
+            moreDeathReports: [''],
+            leadSurgeon: '',
+            extraStaff: '',
+            patientName: '',
+            patientMedicine: '',
+            patientConsent: '',
+            patientMedicalRecord: '',
+            patientAllergies: '',
+            surgeryComplications: '',
+            surgeryProcedures: '',
+            drugType: '',
+            postDrugtype: '',
+            surgicalSummery: '',
+            surgeryTime: '',
+            leadDoctor: '',
+            medicalComplications: '',
+            treatmentProcedures: '',
+            medType: '',
+            postTreatment: '',
+            medicalSummary: '',
+            evalTime: '',
+            patientHeight: '',
+            patientWeight: '',
+            patientBMI: '',
+            patientTemperature: '',
+            patientBPM: '',
+            patientpulse: '',
+            patientOxi: '',
+            patientBP: '',
+            patientCareer: '',
+            patientImpairments: '',
+            patientPastDiseases: '',
+            patientAssessment: '',
+            appointmentDate: '',
+            patientPH: '',
+            patientGender: '',
+            PatientMedicalRecord: '',
+            PatientName: '',
+            patientChewing: '',
+            patientPriority: '',
+            patientNewMedicine: '',
+            patientTreatment: '',
+            patientDiagnosis: '',
+            patientPrescription: '', // Missing in original
+            patientSummary: '',
+            dentistName: '',
+            date: '',
+            teethCondition: '', // New field for dental condition
+            oralHygiene: '',   // New field for hygiene status
+            lastDentalVisit: '' // New field for last visit
         });
         showNotification('Form cleared successfully!', 'check-circle');
     };
@@ -567,13 +906,14 @@ Surgical Operations Department`;
     // Update toggle function
     const toggleBBCodeVersion = () => {
         setBbCodeVersion(prev => {
-            const newVersion = prev === 1 ? 2 : prev === 2 ? 3 : prev === 3 ? 4 : prev === 4 ? 5 : 1;
+            const newVersion = prev === 1 ? 2 : prev === 2 ? 3 : prev === 3 ? 4 : prev === 4 ? 5 : prev === 5 ? 6 : 1;
             const messages = {
                 1: 'Death Investigation Report',
                 2: 'Email Generator',
-                3: 'Internal Report',
-                4: 'Internal Medicine',
-                5: 'Surgical Operations'
+                3: 'Physical Evaluation (Internal Medicine)',
+                4: 'Internal Dental',
+                5: 'Surgical Operations',
+                6: 'Physical Evaluation (Internal Medicine)'
             };
             showNotification(`Switched to ${messages[newVersion]}`, 'exchange-alt');
             return newVersion;
@@ -707,6 +1047,9 @@ Surgical Operations Department`;
         setShowAgencySelector(prev => !prev);
     };
 
+    // Add state near other useState declarations
+    const [showBBCode, setShowBBCode] = useState(false);
+
     // Add modal to the start of return statement
     return (
         <div className="App">
@@ -729,26 +1072,26 @@ Surgical Operations Department`;
                                     className="agency-select-button"
                                     onClick={() => handleAgencySelect(1)} // Death Report 
                                 >
-                                    <img src={LSPDLogo} alt="LSPD" className="agency-logo" />
-                                    <span>Death Report</span>
+                                    <i className="fa-solid fa-book-skull" style={{ fontSize: '2.5rem', color: '#dc3545' }}></i>
+                                    <span>Death Report1</span>
                                 </button>
                                 <button
                                     className="agency-select-button"
                                     onClick={() => handleAgencySelect(2)} // Email Generator
                                 >
-                                    <i class="fa-solid fa-envelope"></i>
-                                    <span>Email Generator</span>
+                                    <i className="fa-solid fa-envelope" style={{ fontSize: '2.5rem', color: '#dc3545' }}></i>
+                                    <span>Email Generator2</span>
                                 </button>
                                 <button
                                     className="agency-select-button"
-                                    onClick={() => handleAgencySelect(3)} // Dev Testing
+                                    onClick={() => handleAgencySelect(3)} // Medical Consultation Internal Medicine
                                 >
-                                    <img src={LSFDLogo} alt="LSFD" className="agency-logo" />
-                                    <span>LSFD</span>
+                                    <i className="fa-brands fa-dev" style={{ fontSize: '2.5rem', color: '#dc3545' }}></i>
+                                    <span>Medical Consultation [IM] </span>
                                 </button>
                                 <button
                                     className="agency-select-button"
-                                    onClick={() => handleAgencySelect(4)}
+                                    onClick={() => handleAgencySelect(5)} // Surgery
                                 >
                                     <i className="fa-solid fa-user-doctor" style={{ fontSize: '2.5rem', color: '#dc3545' }}></i>
                                     <span>Surgical Operations</span>
@@ -757,24 +1100,25 @@ Surgical Operations Department`;
                             <div className="agency-row">
                                 <button
                                     className="agency-select-button"
-                                    onClick={() => handleAgencySelect(5)}
+                                    onClick={() => handleAgencySelect(6)} // Physical Evaluation (Internal Medicine)
                                 >
                                     <i className="fa-solid fa-user-doctor" style={{ fontSize: '2rem', color: '#dc3545' }}></i>
-                                    <span>Physical Eval - Internal</span>
+                                    <span>Physical Evaluation (Internal Medicine)
+                                    </span>
                                 </button>
                                 <button
                                     className="agency-select-button"
-                                    onClick={() => handleAgencySelect(6)}
+                                    onClick={() => handleAgencySelect(3)}
                                 >
                                     <i className="fa-solid fa-user-doctor" style={{ fontSize: '2rem', color: '#dc3545' }}></i>
-                                    <span>OB / Gyne </span>
+                                    <span>OB / Gyne  - NOT FINISHED</span>
                                 </button>
                                 <button
                                     className="agency-select-button"
                                     onClick={() => handleAgencySelect(7)}
                                 >
                                     <i className="fa-solid fa-user-doctor" style={{ fontSize: '2rem', color: '#dc3545' }}></i>
-                                    <span>Other </span>
+                                    <span>Other - NOT FINISHED </span>
                                 </button>
                             </div>
                         </div>
@@ -836,7 +1180,7 @@ Surgical Operations Department`;
                                 </div>
                                 <div className="modal-content">
                                     <ul>
-                                        <li>Migrated to Bootstrap Components</li>
+                                        <li>To do -  Medical Consultation (EM) | OBY GYNE | Additional Docs</li>
                                         <li>Added QOL features</li>
                                     </ul>
                                 </div>
@@ -859,7 +1203,7 @@ Surgical Operations Department`;
                             onClick={toggleAgencySelector}
                         >
                             <i className="fas fa-exchange-alt"></i>
-                            Switch Agency
+                            Switch Department
                         </button>
                     </div>
                     {notification && (
@@ -1343,177 +1687,368 @@ Surgical Operations Department`;
                                 </Form.Group>
                             </>
                         ) : bbCodeVersion === 3 ? (
-                            // BBCode 3 - Internal Report
+                            // BBCode 3 - Internal Medicine
                             <>
+                                <h5>INTERNAL MEDICINE CONSULTATION</h5>
+
                                 <Form.Group className="mb-3">
-                                    <Form.Label>Officer Name or Badge Number:</Form.Label>
+                                    <Form.Label>Section 1: Medical Patient Record</Form.Label>
                                     <Form.Control
                                         type="text"
-                                        name="requestingOfficer"
-                                        value={formData.requestingOfficer}
+                                        name="patientMedicalRecord"
+                                        value={formData.patientMedicalRecord}
                                         onChange={handleChange}
+                                        placeholder="Patient Number"
                                         required
-                                        className="form-control"
                                     />
-                                </Form.Group>
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Requesting Agency:</Form.Label>
-                                    <Form.Select
-                                        name="department"
-                                        value={formData.department}
-                                        onChange={handleChange}
-                                        required
-                                        className="form-select"
-                                    >
-                                        <option value="" disabled>Select Department</option>
-                                        <option value="LSFD">LSFD</option>
-                                        <option value="LSPD">LSPD</option>
-                                        <option value="LSSD">LSSD</option>
-                                        <option value="PHMC">PHMC</option>
-                                        <option value="SANFIRE">SANFIRE</option>
-                                        <option value="SADCR">SADCR</option>
-                                        <option value="LSGOV">LSGOV</option>
-                                    </Form.Select>
-                                </Form.Group>
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Coroner Name:</Form.Label>
-                                    <Form.Select
-                                        name="coronerName"
-                                        value={formData.coronerName}
-                                        onChange={handleChange}
-                                        required
-                                        className="form-select"
-                                    >
-                                        <option value="">Select Coroner</option>
-                                        {coronerList.map(coroner => (
-                                            <option key={coroner.badge} value={coroner.name}>
-                                                {coroner.name}
-                                            </option>
-                                        ))}
-                                    </Form.Select>
-                                </Form.Group>
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Job Classification:</Form.Label>
-                                    <Form.Select
-                                        name="coronerRank"
-                                        value={formData.coronerRank}
-                                        onChange={handleChange}
-                                        required
-                                        className="form-select"
-                                    >
-                                        <option value="Trainee Forensic Attendant">Trainee Forensic Attendant</option>
-                                        <option value="Forensic Attendant">Forensic Attendant</option>
-                                        <option value="Senior Forensic Attendant">Senior Forensic Attendant </option>
-                                        <option value="Supervising Forensic Attendant">Supervising Forensic Attendant</option>
-                                        <option value="Coroner Investigator">Coroner Investigator</option>
-                                        <option value="Supervising Coroner Investigator">Supervising Coroner Investigator</option>
-                                        <option value="Medical Examiner">Medical Examiner</option>
-                                        <option value="Supervising Medical Examiner">Supervising Medical Examiner</option>
-                                        <option value="Deputy Chief Medical Examiner">Deputy Chief Medical Examiner</option>
-                                        <option value="Chief Medical Examiner">Chief Medical Examiner</option>
-                                    </Form.Select>
-                                </Form.Group>
-                                <Form.Group className="mb-3">
-                                    <Form.Label>
-                                        Coroner Contact Number:
-                                    </Form.Label>
-                                    <span className="helper-text">
-                                        (By default PHMC Landline is added, if you have a work number please add it)
-                                    </span>
                                     <Form.Control
-                                        as="textarea"
-                                        name="coronerPHNumber"
-                                        value={formData.coronerPHNumber}
+                                        type="text"
+                                        name="doctorName"
+                                        value={formData.doctorName}
                                         onChange={handleChange}
-                                        rows="1"
+                                        placeholder="Doctor's Name"
                                         required
-                                        className="form-control"
                                     />
+                                </Form.Group>
 
-                                </Form.Group>
                                 <Form.Group className="mb-3">
-                                    <Form.Label>Coroner Discord Name:</Form.Label>
+                                    <Form.Label>Section 2: Patient Demographics</Form.Label>
                                     <Form.Control
-                                        as="textarea"
-                                        name="coronerDiscord"
-                                        value={formData.coronerDiscord}
+                                        type="text"
+                                        name="patientName"
+                                        value={formData.patientName}
                                         onChange={handleChange}
-                                        rows="1"
+                                        placeholder="Full Name"
                                         required
-                                        className="form-control"
+                                    />
+                                    <Form.Select
+                                        name="patientGender"
+                                        value={formData.patientGender}
+                                        onChange={handleChange}
+                                        required
+                                    >
+                                        <option value="">Select Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </Form.Select>
+                                    <Form.Text className="text-muted">
+                                        Patient's date of birth
+                                    </Form.Text>
+
+                                    <Form.Control
+                                        type="date"
+                                        name="patientDateofBirth"
+                                        value={formData.patientDateofBirth}
+                                        onChange={handleChange}
+                                        placeholder="Date of Birth"
+                                        required
+                                    />
+                                    <Form.Control
+                                        type="tel"
+                                        name="patientPH"
+                                        value={formData.patientPH}
+                                        onChange={handleChange}
+                                        placeholder="Telephone Number"
+                                        required
+                                    />
+                                    <Form.Control
+                                        type="email"
+                                        name="patientEmail"
+                                        value={formData.patientEmail}
+                                        onChange={handleChange}
+                                        placeholder="Email Address / ((Include a Discord handle if available))"
+                                    />
+                                    <Form.Control
+                                        type="text"
+                                        name="patientAddress"
+                                        value={formData.patientAddress}
+                                        onChange={handleChange}
+                                        placeholder="Home Address"
+                                        required
                                     />
                                 </Form.Group>
+
                                 <Form.Group className="mb-3">
-                                    <Form.Label>Decedent(s) Names:</Form.Label>
+                                    <Form.Label>Section 3: Emergency Contact Information</Form.Label>
                                     <Form.Control
-                                        as="textarea"
-                                        name="decedentName"
-                                        value={formData.decedentName}
+                                        type="text"
+                                        name="patientEmergencyContact"
+                                        value={formData.patientEmergencyContact}
                                         onChange={handleChange}
-                                        rows="1"
+                                        placeholder="Emergency Contact Name"
                                         required
-                                        className="form-control"
+                                    />
+                                    <Form.Control
+                                        type="tel"
+                                        name="patientEmergencyContactNumber"
+                                        value={formData.patientEmergencyContactNumber}
+                                        onChange={handleChange}
+                                        placeholder="Emergency Contact Number"
+                                        required
+                                    />
+                                    <Form.Control
+                                        type="text"
+                                        name="patientEmergencyContactRelation"
+                                        value={formData.patientEmergencyContactRelation}
+                                        onChange={handleChange}
+                                        placeholder="Relation to Patient"
+                                        required
                                     />
                                 </Form.Group>
+
                                 <Form.Group className="mb-3">
-                                    <Form.Label>Paste Internal Report BBCode:</Form.Label>
+                                    <Form.Label>Section 4: Health Status Information</Form.Label>
+                                    <Form.Select
+                                        name="patientBloodType"
+                                        value={formData.patientBloodType}
+                                        onChange={handleChange}
+                                        required
+                                    >
+                                        <option value="">Select Blood Type</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                    </Form.Select>
                                     <Form.Control
                                         as="textarea"
-                                        name="internalReport"
-                                        value={formData.internalReport}
+                                        name="patientChronicDiseases"
+                                        value={formData.patientChronicDiseases}
                                         onChange={handleChange}
+                                        placeholder="Known Chronic Diseases"
+                                        rows="2"
+                                    />
+                                    <Form.Control
+                                        as="textarea"
+                                        name="patientAllergies"
+                                        value={formData.patientAllergies}
+                                        onChange={handleChange}
+                                        placeholder="Known Allergies"
+                                        rows="2"
+                                    />
+                                </Form.Group>
+                            </>
+                        ) : bbCodeVersion === 4 ? (
+                            // Dental Consultation fields
+                            <>
+                                <h5>DENTAL CONSULTATION</h5>
+
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Patient Information</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="PatientMedicalRecord"
+                                        value={formData.PatientMedicalRecord}
+                                        onChange={handleChange}
+                                        placeholder="Medical Record Number"
+                                        required
+                                    />
+                                    <Form.Control
+                                        type="text"
+                                        name="PatientName"
+                                        value={formData.PatientName}
+                                        onChange={handleChange}
+                                        placeholder="Patient Full Name"
+                                        required
+                                    />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Physical Assessment</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="patientWeight"
+                                        value={formData.patientWeight}
+                                        onChange={handleChange}
+                                        placeholder="Weight"
+                                        required
+                                    />
+                                    <Form.Select
+                                        name="patientChewing"
+                                        value={formData.patientChewing}
+                                        onChange={handleChange}
+                                        required
+                                    >
+                                        <option value="">Select Chewing Problems</option>
+                                        <option value="No Issues">No Issues</option>
+                                        <option value="Mild Difficulty">Mild Difficulty</option>
+                                        <option value="Moderate Difficulty">Moderate Difficulty</option>
+                                        <option value="Severe Difficulty">Severe Difficulty</option>
+                                    </Form.Select>
+                                </Form.Group>
+
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Priority Classification</Form.Label>
+                                    <Form.Select
+                                        name="patientPriority"
+                                        value={formData.patientPriority}
+                                        onChange={handleChange}
+                                        required
+                                    >
+                                        <option value="">Select Priority Level</option>
+                                        <option value="Priority 1">Priority 1: Immediate care</option>
+                                        <option value="Priority 2">Priority 2: Extensive decay</option>
+                                        <option value="Priority 3">Priority 3: Obvious cavities</option>
+                                        <option value="Priority 0">Priority 0: No obvious cavities</option>
+                                    </Form.Select>
+                                </Form.Group>
+
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Medications</Form.Label>
+                                    <Form.Control
+                                        as="textarea"
+                                        name="patientMedicine"
+                                        value={formData.patientMedicine}
+                                        onChange={handleChange}
+                                        placeholder="Current Medications"
+                                        rows="2"
+                                    />
+                                    <Form.Control
+                                        as="textarea"
+                                        name="patientNewMedicine"
+                                        value={formData.patientNewMedicine}
+                                        onChange={handleChange}
+                                        placeholder="Prescribed Medications"
+                                        rows="2"
+                                    />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Diagnosis & Treatment</Form.Label>
+                                    <Form.Control
+                                        as="textarea"
+                                        name="patientDiagnosis"
+                                        value={formData.patientDiagnosis}
+                                        onChange={handleChange}
+                                        placeholder="Diagnosis"
+                                        rows="3"
+                                        required
+                                    />
+                                    <Form.Control
+                                        as="textarea"
+                                        name="patientTreatment"
+                                        value={formData.patientTreatment}
+                                        onChange={handleChange}
+                                        placeholder="Treatment Plan"
+                                        rows="3"
+                                        required
+                                    />
+                                    <Form.Control
+                                        as="textarea"
+                                        name="patientPrescription"
+                                        value={formData.patientPrescription}
+                                        onChange={handleChange}
+                                        placeholder="Prescriptions"
+                                        rows="2"
+                                    />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Consultation Summary</Form.Label>
+                                    <Form.Control
+                                        as="textarea"
+                                        name="patientSummary"
+                                        value={formData.patientSummary}
+                                        onChange={handleChange}
+                                        placeholder="Summary of Consultation"
                                         rows="4"
                                         required
+                                    />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Dentist Information</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="dentistName"
+                                        value={formData.dentistName}
+                                        onChange={handleChange}
+                                        placeholder="Dentist Name"
+                                        required
+                                    />
+                                    <Form.Control
+                                        type="date"
+                                        name="date"
+                                        value={formData.date}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </Form.Group>
+                            </>
+                        ) : bbCodeVersion === 5 ? (
+                            // BBCode 5 - Surgical Operations
+                            <>
+                                <h5>SECTION 1: PERSONNEL</h5>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Surgeon Name:</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="leadSurgeon"
+                                        value={formData.leadSurgeon}
+                                        onChange={handleChange}
+                                        required
                                         className="form-control"
+                                        placeholder="Enter surgeon name"
                                     />
                                 </Form.Group>
                                 <Form.Group className="mb-3">
-                                    <div className="input-group-horizontal">
-                                        <Form.Label>Additional Internal Reports:</Form.Label>
-                                        <Form.Check
-                                            type="checkbox"
-                                            checked={formData.showInternalAdditionalReports}
-                                            onChange={(e) => setFormData(prev => ({
-                                                ...prev,
-                                                showInternalAdditionalReports: e.target.checked
-                                            }))}
-                                        />
-                                    </div>
-                                    {formData.showInternalAdditionalReports && (
-                                        <>
-                                            <Form.Label>Additional Internal Reports</Form.Label>
-                                            <Form.Control
-                                                as="textarea"
-                                                id="internalAdditionalReports"
-                                                name="internalAdditionalReports"
-                                                value={formData.internalAdditionalReports}
-                                                onChange={handleChange}
-                                                rows="4"
-                                                placeholder="Paste additional internal reports here"
-                                                className="form-control"
-                                            />
-                                        </>
-                                    )}
-                                </Form.Group>
-                                <Form.Group className="mb-3">
-                                    <Form.Label>WHERE WAS THE TREATMENT PROVIDED?</Form.Label>
-                                    <Form.Select
-                                        name="treatmentLocation"
-                                        value={formData.treatmentLocation}
+                                    <Form.Label>Additional Staff:</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="extraStaff"
+                                        value={formData.extraStaff}
                                         onChange={handleChange}
                                         required
-                                        className="form-select"
-                                    >
-                                        <option value="">Select location...</option>
-                                        <option value="On Site">On Site</option>
-                                        <option value="Emergency Room">Emergency Room</option>
-                                    </Form.Select>
+                                        className="form-control"
+                                        placeholder="Enter staff present (( Leave N/A if NPCed )) "
+                                    />
                                 </Form.Group>
                                 <Form.Group className="mb-3">
-                                    <Form.Label>Police Notification:</Form.Label>
+                                    <Form.Label>Patient Name</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="patientName"
+                                        value={formData.patientName}
+                                        onChange={handleChange}
+                                        required
+                                        className="form-control"
+                                        placeholder="Eden Sawyer"
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Medical Record Number:</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="patientMedicalRecord"
+                                        value={formData.patientMedicalRecord}
+                                        onChange={handleChange}
+                                        required
+                                        className="form-control"
+                                        placeholder="Enter patient's medical record number"
+                                    />
+                                </Form.Group>
+                                <h5>SECTION 2: SURGICAL INQUIRY</h5>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Did the patient or their family consent, or did they have a life threatening or severe injury that requires immediate surgical intervention?</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="patientConsent"
+                                        value={formData.patientConsent}
+                                        onChange={handleChange}
+                                        required
+                                        className="form-control"
+                                        placeholder=""
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Did any medical complications occur during the surgery</Form.Label>
                                     <Form.Select
-                                        name="policeNotification"
-                                        value={formData.policeNotification}
+                                        name="surgeryComplications"
+                                        value={formData.surgeryComplications}
                                         onChange={handleChange}
                                         required
                                         className="form-select"
@@ -1524,113 +2059,255 @@ Surgical Operations Department`;
                                     </Form.Select>
                                 </Form.Group>
                                 <Form.Group className="mb-3">
-                                    <Form.Label>Name | Role | Contact of Parties Involved:</Form.Label>
-                                    <div className="parties-container">
-                                        {formData.partiesInvolved.map((party, index) => (
-                                            <div key={index} className="party-input">
-                                                <span>{index + 1}.</span>
-                                                <Form.Control
-                                                    type="text"
-                                                    value={party}
-                                                    onChange={(e) => handlePartyChange(index, e.target.value)}
-                                                    placeholder="Name / Role / Contact"
-                                                    className="form-control"
-                                                />
-                                                <Button
-                                                    variant="danger"
-                                                    onClick={() => removeParty(index)}
-                                                    className="remove-party-button"
-                                                >
-                                                    REMOVE FIELD
-                                                </Button>
-                                            </div>
-                                        ))}
-                                        <Button
-                                            variant="primary"
-                                            onClick={addParty}
-                                            className="add-party-button"
-                                        >
-                                            <i className="fas fa-plus"></i> Add Party
-                                        </Button>
-
-                                    </div>
+                                    <Form.Label>Was the procedure completed successfully, and did it result in the desired clinical outcome?</Form.Label>
+                                    <Form.Select
+                                        name="surgeryProcedures"
+                                        value={formData.surgeryProcedures}
+                                        onChange={handleChange}
+                                        required
+                                        className="form-control"
+                                    >
+                                        <option value="">Select...</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </Form.Select>
                                 </Form.Group>
-                            </>
-                        ) : bbCodeVersion === 4 ? (
-                            // Internal Medicine form fields
-                            <>
+                                <h5>SECTION 3: POST-ANESTHESIA REPORT </h5>
                                 <Form.Group className="mb-3">
-                                    <Form.Label>Medical Staff Name or Badge Number:</Form.Label>
+                                    <Form.Label>Known Current Medication:</Form.Label>
                                     <Form.Control
                                         type="text"
-                                        name="requestingOfficer"
-                                        value={formData.requestingOfficer}
+                                        name="patientMedicine"
+                                        value={formData.patientMedicine}
+                                        onChange={handleChange}
+                                        required
+                                        className="form-control"
+                                        placeholder="Enter patient's current medication"
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Known Allergies:</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="patientAllergies"
+                                        value={formData.patientAllergies}
+                                        onChange={handleChange}
+                                        required
+                                        className="form-control"
+                                        placeholder="Enter patient's known allergies"
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Type & Dosage of Anesthesia Administered:</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="drugType"
+                                        value={formData.drugType}
+                                        onChange={handleChange}
+                                        required
+                                        className="form-control"
+                                        placeholder="Enter patient's known allergies"
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Post-Operative Anesthesia Details:</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="postDrugtype"
+                                        value={formData.postDrugtype}
+                                        onChange={handleChange}
+                                        required
+                                        className="form-control"
+                                        placeholder="Post Operative Anesthesia Details"
+                                    />
+                                </Form.Group>
+                                <h5>SECTION 4: SUMMARY OF SURGICAL PROCEDURE PERFORMED</h5>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Summerize Surgical Procedure:</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="surgicalSummery"
+                                        value={formData.surgicalSummery}
+                                        onChange={handleChange}
+                                        required
+                                        className="form-control"
+                                        placeholder="Summary of surgical procedure performed"
+                                        rows="4"
+                                    />
+                                </Form.Group>
+                                <h5>SECTION 5: DATE OF SURGERY</h5>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Date of Surgery:</Form.Label>
+                                    <Form.Control
+                                        type="date"
+                                        name="surgeryTime"
+                                        value={formData.surgeryTime}
                                         onChange={handleChange}
                                         required
                                         className="form-control"
                                     />
                                 </Form.Group>
-                                <Form.Group className="mb-3">
-                                    <Form.Label>Medical Department:</Form.Label>
-                                    <Form.Select
-                                        name="department"
-                                        value={formData.department}
-                                        onChange={handleChange}
-                                        required
-                                        className="form-select"
-                                    >
-                                        <option value="" disabled>Select Department</option>
-                                        <option value="Emergency">Emergency Department</option>
-                                        <option value="Surgery">Surgery Department</option>
-                                        <option value="ICU">Intensive Care Unit</option>
-                                        <option value="Internal">Internal Medicine</option>
-                                        <option value="Radiology">Radiology Department</option>
-                                        <option value="Laboratory">Laboratory Services</option>
-                                        <option value="Pharmacy">Pharmacy Department</option>
-                                    </Form.Select>
-                                </Form.Group>
+
                             </>
-                        ) : (
-                            // BBCode 5 - Surgical Operations
+                        ) : bbCodeVersion === 6 ? (
+                            // Physical Evaluation form
                             <>
+                                <h5>PHYSICAL EVALUATION</h5>
                                 <Form.Group className="mb-3">
-                                    <Form.Label>Surgeon Name:</Form.Label>
-                                    <Form.Select
-                                        name="surgeonName"
-                                        value={formData.surgeonName}
+                                    <Form.Label>Patient Information</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="patientName"
+                                        value={formData.patientName}
                                         onChange={handleChange}
+                                        placeholder="Patient Name"
                                         required
-                                        className="form-select"
-                                    >
-                                        <option value="">Select Surgeon</option>
-                                        {surgeonList.map(surgeon => (
-                                            <option key={surgeon.badge} value={surgeon.name}>
-                                                {surgeon.name}
-                                            </option>
-                                        ))}
-                                    </Form.Select>
+                                    />
+                                    <Form.Control
+                                        type="text"
+                                        name="patientGender"
+                                        value={formData.patientGender}
+                                        onChange={handleChange}
+                                        placeholder="Gender"
+                                        required
+                                    />
+                                    <Form.Control
+                                        type="tel"
+                                        name="patientPH"
+                                        value={formData.patientPH}
+                                        onChange={handleChange}
+                                        placeholder="Phone Number"
+                                    />
                                 </Form.Group>
 
                                 <Form.Group className="mb-3">
-                                    <Form.Label>Operation Department:</Form.Label>
-                                    <Form.Select
-                                        name="department"
-                                        value={formData.department}
+                                    <Form.Label>Measurements</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="patientHeight"
+                                        value={formData.patientHeight}
+                                        onChange={handleChange}
+                                        placeholder="Height"
+                                    />
+                                    <Form.Control
+                                        type="text"
+                                        name="patientWeight"
+                                        value={formData.patientWeight}
+                                        onChange={handleChange}
+                                        placeholder="Weight"
+                                    />
+                                    <Form.Control
+                                        type="text"
+                                        name="patientBMI"
+                                        value={formData.patientBMI}
+                                        onChange={handleChange}
+                                        placeholder="BMI"
+                                    />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Vitals</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="patientTemperature"
+                                        value={formData.patientTemperature}
+                                        onChange={handleChange}
+                                        placeholder="Temperature"
+                                    />
+                                    <Form.Control
+                                        type="text"
+                                        name="patientBPM"
+                                        value={formData.patientBPM}
+                                        onChange={handleChange}
+                                        placeholder="Heart Rate (BPM)"
+                                    />
+                                    <Form.Control
+                                        type="text"
+                                        name="patientpulse"
+                                        value={formData.patientpulse}
+                                        onChange={handleChange}
+                                        placeholder="Respiration Rate"
+                                    />
+                                    <Form.Control
+                                        type="text"
+                                        name="patientOxi"
+                                        value={formData.patientOxi}
+                                        onChange={handleChange}
+                                        placeholder="Oxygen Saturation (%)"
+                                    />
+                                    <Form.Control
+                                        type="text"
+                                        name="patientBP"
+                                        value={formData.patientBP}
+                                        onChange={handleChange}
+                                        placeholder="Blood Pressure (MMHG)"
+                                    />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Medical History</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="patientCareer"
+                                        value={formData.patientCareer}
+                                        onChange={handleChange}
+                                        placeholder="Previous Occupation"
+                                    />
+                                    <Form.Control
+                                        as="textarea"
+                                        name="patientImpairments"
+                                        value={formData.patientImpairments}
+                                        onChange={handleChange}
+                                        placeholder="Medical Conditions/Impairments"
+                                        rows="3"
+                                    />
+                                    <Form.Control
+                                        as="textarea"
+                                        name="patientPastDiseases"
+                                        value={formData.patientPastDiseases}
+                                        onChange={handleChange}
+                                        placeholder="Family Medical History"
+                                        rows="3"
+                                    />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Assessment</Form.Label>
+                                    <Form.Control
+                                        as="textarea"
+                                        name="patientAssessment"
+                                        value={formData.patientAssessment}
+                                        onChange={handleChange}
+                                        placeholder="Assessment Summary"
+                                        rows="4"
+                                    />
+                                </Form.Group>
+
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Examination Date</Form.Label>
+                                    <Form.Control
+                                        type="datetime-local"
+                                        name="appointmentDate"
+                                        value={formData.appointmentDate}
                                         onChange={handleChange}
                                         required
-                                        className="form-select"
-                                    >
-                                        <option value="" disabled>Select Department</option>
-                                        <option value="General Surgery">General Surgery</option>
-                                        <option value="Cardiothoracic">Cardiothoracic Surgery</option>
-                                        <option value="Neurosurgery">Neurosurgery</option>
-                                        <option value="Orthopedic">Orthopedic Surgery</option>
-                                        <option value="Trauma">Trauma Surgery</option>
-                                    </Form.Select>
+                                    />
+                                </Form.Group>
+                                <Form.Group className="mb-3">
+                                    <Form.Label>Doctor</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="leadDoctor"
+                                        value={formData.leadDoctor}
+                                        onChange={handleChange}
+                                        placeholder="Doctor Smith"
+                                        rows="4"
+
+                                    />
                                 </Form.Group>
 
                             </>
-                        )}
+                        ) : null}
                         {(bbCodeVersion === 1 || bbCodeVersion === 3) && (
                             <div className="button-group">
                                 <button
@@ -1659,25 +2336,46 @@ Surgical Operations Department`;
                         <h3>You are viewing:
                             {bbCodeVersion === 1 ? ' Death Investigation Report' :
                                 bbCodeVersion === 2 ? ' Coroner Email Generator' :
-                                    bbCodeVersion === 3 ? ' Internal Report' :
-                                        bbCodeVersion === 4 ? ' Internal Medicine' :
-                                            ' Surgical Operations'}
+                                    bbCodeVersion === 3 ? ' Medical Consultation (Internal Medicine)' :
+                                        bbCodeVersion === 4 ? ' Dental Medicine' :
+                                            bbCodeVersion === 5 ? ' Surgical Operations' :
+                                                ' Physical Evaluation (Internal Medicine)'}
                         </h3>
                     </div>
-                    <h2>Generated BBCode</h2>
-                    <div className="bbcode-output">
-                        <pre>
-                            {bbCodeVersion === 1 ? generateDeath() :
-                                bbCodeVersion === 2 ? generateEmail() :
-                                    bbCodeVersion === 3 ? generateInternalBBCode() :
-                                        bbCodeVersion === 4 ? generateInternalMedicine() :
-                                            generateSurgicalOps()}
-                        </pre>
+                    <div className="bbcode-section">
+                        <Button
+                            variant="primary"
+                            onClick={() => setShowBBCode(!showBBCode)}
+                            className="toggle-bbcode-button"
+                        >
+                            <i className={`fas ${showBBCode ? 'fa-eye-slash' : 'fa-eye'}`}></i>
+                            {showBBCode ? ' Hide BBCode' : ' Show BBCode'}
+                        </Button>
+
+                        {showBBCode && (
+                            <>
+                                <h2>Generated BBCode</h2>
+                                <div className="bbcode-output">
+                                    <pre>
+                                        {bbCodeVersion === 1 ? generateDeath() :
+                                            bbCodeVersion === 2 ? generateEmail() :
+                                                bbCodeVersion === 3 ? generateMedicalConsultationInternalMedicine() : // Medical Consultation (Internal Medicine)
+                                                    bbCodeVersion === 4 ? generateDental() : // [FORM] Dental Follow-Ups
+                                                        bbCodeVersion === 5 ? generateSurgicalOps() : // [FORM] Surgical Operation Report
+                                                            generatePhysEvalInternalMed()} // [FORM] Physical Evaluation (Internal Medicine)
+                                    </pre>
+                                </div>
+                            </>
+                        )}
                     </div>
-                    <h1>Generated Title</h1>
-                    <div className="title-output">
-                        <pre>{generateTitle()}</pre>
-                    </div>
+                    {bbCodeVersion !== 5 && (
+                        <>
+                            <h1>Generated Title</h1>
+                            <div className="title-output">
+                                <pre>{generateTitle()}</pre>
+                            </div>
+                        </>
+                    )}
 
                     {bbCodeVersion === 2 && (
                         <div className="agency-buttons">
@@ -1772,15 +2470,23 @@ Surgical Operations Department`;
                             type="button"
                             className="changelog-button"
                             onClick={() => {
-                                const bbCode = bbCodeVersion === 1 ? generateDeath() : bbCodeVersion === 2 ? generateEmail() : generateInternalBBCode();
+                                const bbCode = bbCodeVersion === 1 ? generateDeath() :
+                                    bbCodeVersion === 2 ? generateEmail() :
+                                        bbCodeVersion === 3 ? generateMedicalConsultationInternalMedicine() :
+                                            bbCodeVersion === 4 ? generateDental() :
+                                                generateSurgicalOps();
                                 const currentDateTime = new Date().toLocaleString();
                                 const userAgent = navigator.userAgent;
                                 const browserName = getBrowserName(userAgent);
-                                const { decedentName, decedentOOC, coronerName, requestingOfficer } = formData;
-                                const version = bbCodeVersion === 1 ? "Death Report" : "Coroner Email Report";
+                                const { decedentName, decedentOOC, coronerName, requestingOfficer, leadSurgeon, patientName } = formData;
+                                const version = bbCodeVersion === 1 ? "Death Report" :
+                                    bbCodeVersion === 2 ? "Coroner Email Report" :
+                                        bbCodeVersion === 3 ? "Internal Medicine" :
+                                            bbCodeVersion === 4 ? "Internal Medicine Report" :
+                                                "Surgical Operations Report";
 
                                 navigator.clipboard.writeText(bbCode).then(() => {
-                                    showNotification(`${bbCodeVersion === 1 ? "Death Report" : "Coroner Report"} copied!`, 'check-circle');
+                                    showNotification(`${version} copied!`, 'check-circle');
 
                                     // Send POST request to Discord Webhook
                                     fetch('https://discord.com/api/webhooks/1322759224756928584/MjtBlJvA-qZSTFNKcQVYTAXPEjpDxxI1GOpQHIm6SZwZtuf106HDZi9-1wTkBx0wJ6L8', {
@@ -1789,10 +2495,15 @@ Surgical Operations Department`;
                                             'Content-Type': 'application/json'
                                         },
                                         body: JSON.stringify({
-                                            content: bbCodeVersion === 1
-                                                ? `${coronerName} has used your website to fill out a Death Report: \nDecedent's Name: ${decedentName}\nDecedent's OOC Name: ${decedentOOC}\nTimestamp: ${currentDateTime}\nBrowser: ${browserName}\nVersion: ${version}\n`
-                                                : `${coronerName} has used your website to fill out an Coroner Email Report: \nRequesting Officer: ${requestingOfficer}\nTimestamp: ${currentDateTime}\nBrowser: ${browserName}\nVersion: ${version}\n`
-                                                    `${coronerName} has used your website to fill out an Internal Incident Report: ADD VALUES\n`
+                                            content: bbCodeVersion === 1 ?
+                                                `${coronerName} has used your website to fill out a Death Report: \nDecedent's Name: ${decedentName}\nDecedent's OOC Name: ${decedentOOC}\nTimestamp: ${currentDateTime}\nBrowser: ${browserName}\nVersion: ${version}\n` :
+                                                bbCodeVersion === 2 ?
+                                                    `${coronerName} has used your website to fill out a Coroner Email Report: \nRequesting Officer: ${requestingOfficer}\nTimestamp: ${currentDateTime}\nBrowser: ${browserName}\nVersion: ${version}\n` :
+                                                    bbCodeVersion === 3 ?
+                                                        `${coronerName} has used your website to fill out an Internal Medicine\nTimestamp: ${currentDateTime}\nBrowser: ${browserName}\nVersion: ${version}\n` :
+                                                        bbCodeVersion === 4 ?
+                                                            `${coronerName} has used your website to fill out an Internal Dental Report\nTimestamp: ${currentDateTime}\nBrowser: ${browserName}\nVersion: ${version}\n` :
+                                                            `${leadSurgeon} has used your website to fill out a Surgical Operations Report\nPatient: ${patientName}\nTimestamp: ${currentDateTime}\nBrowser: ${browserName}\nVersion: ${version}\n`
                                         })
                                     }).catch(error => {
                                         console.error('Error:', error);
@@ -1812,7 +2523,9 @@ Surgical Operations Department`;
                             <i className="fas fa-clipboard"></i>
                             Copy {bbCodeVersion === 1 ? "Death Report" :
                                 bbCodeVersion === 2 ? "Coroner Report" :
-                                    "Internal Report"}
+                                    bbCodeVersion === 3 ? "Internal Medicine" :
+                                        bbCodeVersion === 4 ? "Internal Medicine Report" :
+                                            "Surgical Operations Report"}
                         </button>
                     </div>
 
@@ -1824,7 +2537,7 @@ Surgical Operations Department`;
                                     height={350}
                                     width={350}
                                     className="Center"
-                                    alt="Internal Reports LiAAAAAAAAAAAAnk"
+                                    alt="Internal Reports Link"
                                 />
                             </a>
                         </div>
@@ -1839,6 +2552,18 @@ Surgical Operations Department`;
                                     alt="Death Reports Link"
                                 />
                             </a>
+                        </div>
+                    )}
+                    {bbCodeVersion === 5 && (
+                        <div className="button-group">
+                            <Button
+                                variant="primary"
+                                onClick={() => window.open('https://phmc.gta.world/viewforum.php?f=268', '_blank')}
+                                className="surgery-button"
+                            >
+                                <i className="fas fa-hospital-user"></i>
+                                Surgical Operations Portal
+                            </Button>
                         </div>
                     )}
                 </div>
