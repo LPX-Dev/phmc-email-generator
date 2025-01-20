@@ -221,7 +221,7 @@ button {
 
 .agency-select-button span {
     color: #acb1cad3;
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     font-weight: bold;
 }
 
@@ -231,21 +231,19 @@ button {
     gap: 10px;
     padding: 1rem;
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
-.agency-row {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+.agency-select-button img {
+    width: 58px;
+    height: 58px;
 }
 
 .agency-select-button {
     width: 150px;
-    height: 120px;
+    height: 150px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
@@ -261,18 +259,7 @@ button {
     flex: 0 1 160px;
 }
 
-    .agency-select-button .fa-ambulance {
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
 
-.agency-logo {
-    width: 80px;
-    height: 80px;
-    object-fit: contain;
-}
 
 .internal-medicine-button {
     grid-column: 2;
@@ -326,7 +313,7 @@ button {
     gap: 10px;
     padding: 1rem;
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -339,6 +326,7 @@ button {
 .agency-select-button {
     min-width: 120px;
     padding: 1rem;
+
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -357,8 +345,9 @@ button {
 .agency-selector-modal {
     background-color: #0d1117;
     border-radius: 8px;
-    padding: 2rem;
+    padding: 1.9rem;
     width: 100%;
+    max-height: 400px;
     max-width: 700px;
 }
 
