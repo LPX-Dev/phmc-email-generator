@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/phmc-email-generator/static/css/main.0b1cb850.css",
-    "main.js": "/phmc-email-generator/static/js/main.e592c9b5.js",
+    "main.js": "/phmc-email-generator/static/js/main.cb130512.js",
     "static/media/fa-solid-900.ttf": "/phmc-email-generator/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
     "static/media/lssd.png": "/phmc-email-generator/static/media/lssd.88defbb73fea92316814.png",
     "static/media/fa-brands-400.ttf": "/phmc-email-generator/static/media/fa-brands-400.1815e00441357e01619e.ttf",
@@ -9,19 +9,25 @@
     "static/media/fa-brands-400.woff2": "/phmc-email-generator/static/media/fa-brands-400.c210719e60948b211a12.woff2",
     "static/media/lsfd.png": "/phmc-email-generator/static/media/lsfd.369fffd0ce7b41b0a860.png",
     "static/media/fa-regular-400.ttf": "/phmc-email-generator/static/media/fa-regular-400.914997e1bdfc990d0897.ttf",
+    "static/media/gynecology.png": "/phmc-email-generator/static/media/gynecology.46a99d12b6667d8c244c.png",
     "static/media/feedback.png": "/phmc-email-generator/static/media/feedback.749299dd3d7b9dcc39a5.png",
+    "static/media/nurse.png": "/phmc-email-generator/static/media/nurse.a674313b9e9023fe3db8.png",
     "static/media/myPaperwork2.png": "/phmc-email-generator/static/media/myPaperwork2.d2d61eeb95f05e33b36f.png",
     "static/media/lspd.png": "/phmc-email-generator/static/media/lspd.330707fe65d8615fe7ee.png",
+    "static/media/email.png": "/phmc-email-generator/static/media/email.d27389667b81e4a5c88c.png",
+    "static/media/surgeon.png": "/phmc-email-generator/static/media/surgeon.8aba086c14cf65551439.png",
     "static/media/fa-regular-400.woff2": "/phmc-email-generator/static/media/fa-regular-400.89999bdf5d835c012025.woff2",
+    "static/media/paperwork.png": "/phmc-email-generator/static/media/paperwork.3f0e8624a37e0e39179f.png",
+    "static/media/application.png": "/phmc-email-generator/static/media/application.3e3782824815d01c05bd.png",
     "static/media/phmc.png": "/phmc-email-generator/static/media/phmc.9d5854886cbaba13deb8.png",
     "static/media/fa-v4compatibility.ttf": "/phmc-email-generator/static/media/fa-v4compatibility.da94ef451f4969af06e6.ttf",
     "static/media/fa-v4compatibility.woff2": "/phmc-email-generator/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
     "index.html": "/phmc-email-generator/index.html",
     "main.0b1cb850.css.map": "/phmc-email-generator/static/css/main.0b1cb850.css.map",
-    "main.e592c9b5.js.map": "/phmc-email-generator/static/js/main.e592c9b5.js.map"
+    "main.cb130512.js.map": "/phmc-email-generator/static/js/main.cb130512.js.map"
   },
   "entrypoints": [
     "static/css/main.0b1cb850.css",
-    "static/js/main.e592c9b5.js"
+    "static/js/main.cb130512.js"
   ]
 }
