@@ -1,7 +1,8 @@
 {
   "files": {
     "main.css": "/phmc-email-generator/static/css/main.569d05bb.css",
-    "main.js": "/phmc-email-generator/static/js/main.cb130512.js",
+    "main.js": "/phmc-email-generator/static/js/main.d4dc525f.js",
+    "static/js/488.29e5f6e1.chunk.js": "/phmc-email-generator/static/js/488.29e5f6e1.chunk.js",
     "static/media/fa-solid-900.ttf": "/phmc-email-generator/static/media/fa-solid-900.2582b0e4bcf85eceead0.ttf",
     "static/media/lssd.png": "/phmc-email-generator/static/media/lssd.88defbb73fea92316814.png",
     "static/media/fa-brands-400.ttf": "/phmc-email-generator/static/media/fa-brands-400.1815e00441357e01619e.ttf",
@@ -10,24 +11,33 @@
     "static/media/lsfd.png": "/phmc-email-generator/static/media/lsfd.369fffd0ce7b41b0a860.png",
     "static/media/fa-regular-400.ttf": "/phmc-email-generator/static/media/fa-regular-400.914997e1bdfc990d0897.ttf",
     "static/media/gynecology.png": "/phmc-email-generator/static/media/gynecology.46a99d12b6667d8c244c.png",
-    "static/media/feedback.png": "/phmc-email-generator/static/media/feedback.749299dd3d7b9dcc39a5.png",
+    "static/media/dentist.png": "/phmc-email-generator/static/media/dentist.3e26440a41eafb8deb55.png",
+    "static/media/psychology.png": "/phmc-email-generator/static/media/psychology.b5a0f9f3a5bb958a744c.png",
     "static/media/nurse.png": "/phmc-email-generator/static/media/nurse.a674313b9e9023fe3db8.png",
+    "static/media/maternity.png": "/phmc-email-generator/static/media/maternity.ce850d9570774f5a350e.png",
     "static/media/myPaperwork2.png": "/phmc-email-generator/static/media/myPaperwork2.d2d61eeb95f05e33b36f.png",
+    "static/media/gyne.png": "/phmc-email-generator/static/media/gyne.677ba37c0ccd59c48d14.png",
     "static/media/lspd.png": "/phmc-email-generator/static/media/lspd.330707fe65d8615fe7ee.png",
+    "static/media/corpse.png": "/phmc-email-generator/static/media/corpse.47e6df033fcd2be7b205.png",
+    "static/media/noshow.png": "/phmc-email-generator/static/media/noshow.d96e843eaa2274e1ec9b.png",
     "static/media/email.png": "/phmc-email-generator/static/media/email.d27389667b81e4a5c88c.png",
     "static/media/surgeon.png": "/phmc-email-generator/static/media/surgeon.8aba086c14cf65551439.png",
+    "static/media/empathy.png": "/phmc-email-generator/static/media/empathy.33486fe20ca790e3a176.png",
+    "static/media/mentalhealth.png": "/phmc-email-generator/static/media/mentalhealth.34f0a61fcaeaf63f5c07.png",
     "static/media/fa-regular-400.woff2": "/phmc-email-generator/static/media/fa-regular-400.89999bdf5d835c012025.woff2",
-    "static/media/paperwork.png": "/phmc-email-generator/static/media/paperwork.3f0e8624a37e0e39179f.png",
     "static/media/application.png": "/phmc-email-generator/static/media/application.3e3782824815d01c05bd.png",
     "static/media/phmc.png": "/phmc-email-generator/static/media/phmc.9d5854886cbaba13deb8.png",
+    "static/media/feedback.png": "/phmc-email-generator/static/media/feedback.c91c80a0df0a044ce8ad.png",
+    "static/media/obstetrical.png": "/phmc-email-generator/static/media/obstetrical.cc42d2e1575f6e1fef02.png",
     "static/media/fa-v4compatibility.ttf": "/phmc-email-generator/static/media/fa-v4compatibility.da94ef451f4969af06e6.ttf",
     "static/media/fa-v4compatibility.woff2": "/phmc-email-generator/static/media/fa-v4compatibility.ea8f94e1d22e0d35ccd4.woff2",
     "index.html": "/phmc-email-generator/index.html",
     "main.569d05bb.css.map": "/phmc-email-generator/static/css/main.569d05bb.css.map",
-    "main.cb130512.js.map": "/phmc-email-generator/static/js/main.cb130512.js.map"
+    "main.d4dc525f.js.map": "/phmc-email-generator/static/js/main.d4dc525f.js.map",
+    "488.29e5f6e1.chunk.js.map": "/phmc-email-generator/static/js/488.29e5f6e1.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.569d05bb.css",
-    "static/js/main.cb130512.js"
+    "static/js/main.d4dc525f.js"
   ]
 }
